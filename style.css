@@ -1,8 +1,23 @@
-.nav {
-    position: sticky;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    padding-top: 60px;
+}
+
+.sticky-nav {
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     background-color: #fff;
-    padding: 1rem;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,9 +25,15 @@
     z-index: 1;
 }
 
+.sticky-nav.scrolled {
+    background-color: #333;
+    color: #fff;
+}
+
 .nav-brand {
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.5rem;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
 }
 
 .nav-links {
@@ -27,115 +48,128 @@
 }
 
 .nav-links a {
-    text-decoration: none;
     color: #333;
+    text-decoration: none;
 }
 
 .nav-links a:hover {
     color: #666;
 }
 
-.hero {
-    background: linear-gradient(to bottom, #ffc107, #ffd280);
-    padding: 5rem;
-    text-align: center;
+.sticky-nav.scrolled .nav-links a {
     color: #fff;
 }
 
+.sticky-nav.scrolled .nav-links a:hover {
+    color: #ccc;
+}
+
+.hero {
+    background: linear-gradient(to bottom, #ffe6cc, #ffd7be);
+    padding: 100px 20px;
+    text-align: center;
+}
+
 .hero-headline {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .hero-subtext {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 18px;
+    margin-bottom: 20px;
 }
 
 .hero-cta {
     background-color: #25D366;
     color: #fff;
     border: none;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
+    padding: 10px 20px;
+    font-size: 18px;
     cursor: pointer;
 }
 
+.hero-cta:hover {
+    background-color: #1e865f;
+}
+
 .services {
-    padding: 5rem;
+    padding: 20px;
 }
 
-.services-headline {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+.section-headline {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.services-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .service-card {
-    background-color: #fff;
-    padding: 2rem;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
     border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px);
 }
 
-.service-card-headline {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+.service-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .about {
-    padding: 5rem;
-}
-
-.about-headline {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    padding: 20px;
 }
 
 .about-text {
-    font-size: 1.2rem;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.trust-signal {
+    font-size: 18px;
+    color: #666;
 }
 
 .testimonials {
-    padding: 5rem;
+    padding: 20px;
 }
 
-.testimonials-headline {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-}
-
-.testimonials-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+.testimonial-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .testimonial-card {
-    background-color: #fff;
-    padding: 2rem;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
     border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px);
 }
 
-.testimonial-card-text {
-    font-size: 1.2rem;
+.testimonial-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.testimonial-author {
+    font-size: 16px;
+    color: #666;
 }
 
 .contact {
-    padding: 5rem;
-}
-
-.contact-headline {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    padding: 20px;
 }
 
 #contact-form {
@@ -146,46 +180,79 @@
 
 #contact-form input, #contact-form textarea {
     width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
 }
 
-#contact-form button {
+#contact-form button[type="submit"] {
     background-color: #25D366;
     color: #fff;
     border: none;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
+    padding: 10px 20px;
+    font-size: 18px;
     cursor: pointer;
 }
 
-.footer {
-    background-color: #333;
-    color: #fff;
-    padding: 2rem;
-    text-align: center;
+#contact-form button[type="submit"]:hover {
+    background-color: #1e865f;
+}
+
+.location {
+    padding: 20px;
+}
+
+#map {
+    border: 1px solid #ccc;
 }
 
 .footer-contact {
-    margin-bottom: 2rem;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
 }
 
-.whatsapp-float {
+.footer-social {
     position: fixed;
     bottom: 20px;
     right: 20px;
+}
+
+.whatsapp-float {
     background-color: #25D366;
     color: #fff;
     border: none;
-    padding: 1rem;
-    font-size: 1.5rem;
+    padding: 10px 20px;
+    font-size: 18px;
     cursor: pointer;
     border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 9999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .whatsapp-float:hover {
-    background-color: #1a9d48;
+    background-color: #1e865f;
+}
+
+@media only screen and (max-width: 768px) {
+    .service-cards {
+        flex-direction: column;
+    }
+    .service-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .testimonial-cards {
+        flex-direction: column;
+    }
+    .testimonial-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
