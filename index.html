@@ -1,112 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunrise Bakery</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Bakery",
-          "name": "Sunrise Bakery",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "MG Road",
-            "addressLocality": "Nagpur",
-            "addressRegion": "MH",
-            "postalCode": "440001",
-            "addressCountry": "IN"
-          },
-          "telephone": "9876543210",
-          "email": "hello@sunrisebakery.in"
-        }
-    </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunrise Bakery Nagpur</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Bakery",
+      "name": "Sunrise Bakery",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "MG Road",
+        "addressLocality": "Nagpur",
+        "addressRegion": "Maharashtra",
+        "postalCode": "440001",
+        "addressCountry": "India"
+      },
+      "telephone": "9876543210",
+      "email": "hello@sunrisebakery.in"
+    }
+  </script>
 </head>
 <body>
+  <header>
     <nav class="sticky-nav">
-        <div class="nav-brand">
-            <h1>Sunrise Bakery</h1>
-        </div>
+      <div class="nav-container">
+        <a href="#" class="nav-logo">Sunrise Bakery</a>
         <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <li><a href="#" class="nav-link">Home</a></li>
+          <li><a href="#" class="nav-link">About Us</a></li>
+          <li><a href="#" class="nav-link">Services</a></li>
+          <li><a href="#" class="nav-link">Contact Us</a></li>
         </ul>
+      </div>
     </nav>
-    <div id="hero">
-        <h1>🍰 Fresh baked happiness since 2010</h1>
-        <p>Indulge in our mouth-watering cakes, pastries, bread, and cookies.</p>
-        <button>Order Now</button>
-    </div>
-    <div id="services">
-        <h2>Our Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Cakes</h3>
-                <p>Custom-designed cakes for all occasions.</p>
-            </div>
-            <div class="service-card">
-                <h3>Pastries</h3>
-                <p>Delicious pastries, perfect for breakfast or snack.</p>
-            </div>
-            <div class="service-card">
-                <h3>Bread</h3>
-                <p>Freshly baked bread, perfect for sandwiches.</p>
-            </div>
-            <div class="service-card">
-                <h3>Cookies</h3>
-                <p>Crunchy cookies, perfect for a sweet treat.</p>
-            </div>
+  </header>
+  <main>
+    <section class="hero">
+      <h1 class="hero-headline">Fresh baked happiness since 2010</h1>
+      <p class="hero-subtext">Experience the best of Nagpur's bakery scene</p>
+      <button class="hero-cta">Order Now</button>
+    </section>
+    <section class="services">
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Cakes</h3>
+          <p>Moist and delicious cakes for any occasion</p>
         </div>
-    </div>
-    <div id="about">
-        <h2>About Us</h2>
-        <p>Sunrise Bakery has been serving Nagpur with fresh baked goods since 2010.</p>
-        <p>We use only the finest ingredients to ensure our products are of the highest quality.</p>
-    </div>
-    <div id="testimonials">
-        <h2>What Our Customers Say</h2>
-        <div class="testimonial">
-            <p>"Sunrise Bakery has the best cakes in Nagpur!" - Rachel</p>
+        <div class="service-card">
+          <h3>Pastries</h3>
+          <p>Flaky and buttery pastries to satisfy your cravings</p>
         </div>
-        <div class="testimonial">
-            <p>"Their pastries are so delicious and fresh!" - John</p>
+        <div class="service-card">
+          <h3>Bread</h3>
+          <p>Freshly baked bread for the perfect breakfast</p>
         </div>
-        <div class="testimonial">
-            <p>"I love their bread, it's perfect for sandwiches!" - Emily</p>
+        <div class="service-card">
+          <h3>Cookies</h3>
+          <p>Soft and chewy cookies to satisfy your sweet tooth</p>
         </div>
-    </div>
-    <div id="contact">
-        <h2>Get in Touch</h2>
-        <form id="contact-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" required>
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" required>
-            <label for="message">Message:</label>
-            <textarea id="message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-        <div id="location">
-            <h3>MG Road, Nagpur</h3>
-            <button id="location-btn">View on Map</button>
+      </div>
+    </section>
+    <section class="about">
+      <h2 class="section-title">About Us</h2>
+      <p>Sunrise Bakery has been serving Nagpur's community since 2010. We pride ourselves on using only the freshest ingredients to create delicious treats that bring happiness to our customers.</p>
+      <ul class="trust-signals">
+        <li>Established in 2010</li>
+        <li>Locally owned and operated</li>
+        <li>Family-friendly bakery</li>
+      </ul>
+    </section>
+    <section class="testimonials">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <blockquote>
+            "Sunrise Bakery has the best cakes in Nagpur! Their moist and delicious flavors are a must-try."
+          </blockquote>
+          <p class="testimonial-author">Rahul P.</p>
         </div>
-    </div>
-    <footer>
-        <h3>Get in Touch:</h3>
-        <ul>
-            <li>Phone: 9876543210</li>
-            <li>Email: <a href="mailto:hello@sunrisebakery.in">hello@sunrisebakery.in</a></li>
-            <li>WhatsApp: <span id="whatsapp-btn" class="whatsapp-btn"></span> 919876543210</li>
-        </ul>
-        <p>&copy; 2023 Sunrise Bakery</p>
+        <div class="testimonial-card">
+          <blockquote>
+            "I've been a customer of Sunrise Bakery for years and I always look forward to their fresh bread and pastries."
+          </blockquote>
+          <p class="testimonial-author">Priya D.</p>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>
+            "Sunrise Bakery's cookies are the best! Soft, chewy, and perfect for a sweet treat."
+          </blockquote>
+          <p class="testimonial-author">Amit K.</p>
+        </div>
+      </div>
+    </section>
+    <section class="contact">
+      <h2 class="section-title">Get in Touch</h2>
+      <form id="contact-form" action="#" method="POST">
+        <input type="hidden" name="_subject" value="New inquiry from Sunrise Bakery">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <p class="contact-info">Phone: 9876543210 | Email: <a href="mailto:hello@sunrisebakery.in">hello@sunrisebakery.in</a></p>
+      <div class="location">
+        <p>MG Road, Nagpur</p>
+        <div id="map"></div>
+      </div>
+    </section>
+    <footer class="footer">
+      <p>&copy; 2023 Sunrise Bakery Nagpur</p>
+      <ul class="social-links">
+        <li><a href="#" class="social-link">WhatsApp</a></li>
+      </ul>
+      <div class="contact-details">
+        <p>Phone: 9876543210</p>
+        <p>Email: <a href="mailto:hello@sunrisebakery.in">hello@sunrisebakery.in</a></p>
+        <p>Address: MG Road, Nagpur</p>
+      </div>
     </footer>
-    <script src="script.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </main>
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </body>
 </html>
