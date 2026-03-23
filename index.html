@@ -4,107 +4,190 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunrise Bakery | Fresh baked happiness since 2010</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <title>Sunrise Bakery</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300;400;600;700&display=swap">
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Bakery",
-      "name": "Sunrise Bakery",
-      "address": "Nagpur",
-      "phone": "9876543210",
-      "email": "hello@sunrisebakery.in"
-    }
+        {"@context":"https://schema.org","@type":"Bakery","name":"Sunrise Bakery","address":{"@type":"PostalAddress","addressLocality":"Nagpur","addressCountry":"IN"},"telephone":"9876543210","email":"hello@sunrisebakery.in"}
     </script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <nav class="sticky-nav">
-        <div class="nav-brand">Sunrise Bakery</div>
-        <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
+    <nav class="sticky top-0 bg-gray-50 py-4 flex justify-between items-center shadow-md">
+        <h1 class="text-3xl font-bold text-blue-600 ml-4">Sunrise Bakery</h1>
+        <ul class="hidden md:flex items-center mr-4 space-x-8">
+            <li><a href="#services" class="text-gray-600 hover:text-blue-600 transition-colors">Services</a></li>
+            <li><a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">About</a></li>
+            <li><a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a></li>
         </ul>
+        <button class="md:hidden flex justify-center w-8 h-8 bg-gray-200 rounded-full shadow-md" id="nav-toggle">
+            <span class="text-gray-600 text-2xl">&#9776;</span>
+        </button>
     </nav>
-    <section class="hero" id="hero">
-        <h1 class="hero-headline">Indulge in the sweetest treats in Nagpur</h1>
-        <p class="hero-subtext">Fresh baked happiness since 2010</p>
-        <button class="hero-cta">Order Now</button>
+    <div class="md:hidden flex flex-col absolute top-16 right-4 space-y-4" id="mobile-nav">
+        <a href="#services" class="text-gray-600 hover:text-blue-600 transition-colors">Services</a>
+        <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
+        <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+    </div>
+    <section class="h-screen bg-gradient-to-r from-blue-600 to-purple-700 flex items-center justify-center" id="hero">
+        <div class="text-center text-gray-50 space-y-4">
+            <h1 class="text-4xl md:text-6xl font-bold">Fresh baked happiness since 2010</h1>
+            <p class="text-lg md:text-2xl">Indulge in our delicious cakes, pastries, bread, and cookies</p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors" id="cta-button">Order Now</button>
+        </div>
     </section>
-    <section class="services" id="services">
-        <h2 class="section-headline">Our Services</h2>
-        <div class="service-cards">
-            <div class="service-card">
-                <h3 class="service-title">Cakes</h3>
-                <p class="service-description">Customized cakes for all occasions</p>
+    <section class="py-16" id="services">
+        <h2 class="text-3xl font-bold text-blue-600 text-center mb-8">Our Services</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div class="bg-gray-50 shadow-lg rounded-xl p-8 hover:scale-105 transition-transform">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">Cakes 🍰</h3>
+                <p class="text-gray-600">Customized cakes for all occasions</p>
             </div>
-            <div class="service-card">
-                <h3 class="service-title">Pastries</h3>
-                <p class="service-description">Freshly baked pastries, every day</p>
+            <div class="bg-gray-50 shadow-lg rounded-xl p-8 hover:scale-105 transition-transform">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">Pastries 🥐</h3>
+                <p class="text-gray-600">Freshly baked pastries every day</p>
             </div>
-            <div class="service-card">
-                <h3 class="service-title">Bread</h3>
-                <p class="service-description">Artisanal bread, baked to perfection</p>
+            <div class="bg-gray-50 shadow-lg rounded-xl p-8 hover:scale-105 transition-transform">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">Bread 🍞</h3>
+                <p class="text-gray-600">Artisanal bread for a healthier lifestyle</p>
             </div>
-            <div class="service-card">
-                <h3 class="service-title">Cookies</h3>
-                <p class="service-description">Soft, chewy, and delicious cookies</p>
+            <div class="bg-gray-50 shadow-lg rounded-xl p-8 hover:scale-105 transition-transform">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">Cookies 🍪</h3>
+                <p class="text-gray-600">Soft-baked cookies for a sweet treat</p>
             </div>
         </div>
     </section>
-    <section class="about" id="about">
-        <h2 class="section-headline">About Us</h2>
-        <p class="about-text">At Sunrise Bakery, we're passionate about baking. With years of experience, we're dedicated to providing the best treats in Nagpur.</p>
-        <p class="trust-signal">Established in 2010, we've been serving the community with love and care.</p>
+    <section class="py-16" id="about">
+        <h2 class="text-3xl font-bold text-blue-600 text-center mb-8">About Us</h2>
+        <div class="text-center text-gray-600 space-y-4">
+            <p class="text-lg md:text-2xl">Sunrise Bakery has been a part of Nagpur's culinary scene since 2010, providing fresh baked goods to the community.</p>
+            <p class="text-lg md:text-2xl">With over 10 years of experience, we have built a reputation for quality and customer satisfaction ⭐⭐⭐⭐⭐</p>
+            <p class="text-lg md:text-2xl">Our team is dedicated to using only the finest ingredients and traditional baking methods to create delicious treats for all occasions.</p>
+        </div>
     </section>
-    <section class="testimonials" id="testimonials">
-        <h2 class="section-headline">What our customers say</h2>
-        <div class="testimonial-cards">
-            <div class="testimonial-card">
-                <p class="testimonial-text">Sunrise Bakery has the best cakes in Nagpur! Their customer service is also top-notch.</p>
-                <p class="testimonial-author">- Rohan, Nagpur</p>
+    <section class="py-16" id="testimonials">
+        <h2 class="text-3xl font-bold text-blue-600 text-center mb-8">What Our Customers Say</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gray-50 shadow-lg rounded-xl p-8">
+                <p class="text-lg text-gray-600 mb-4">"I've been a customer of Sunrise Bakery for years, and I can honestly say that their cakes are the best in town! 🍰" - Priya, Nagpur</p>
+                <div class="flex justify-start">
+                    <span class="text-yellow-400 text-2xl mr-2">⭐⭐⭐⭐⭐</span>
+                    <p class="text-gray-600">5/5 stars</p>
+                </div>
             </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">I've been a regular customer at Sunrise Bakery for years. Their pastries are always fresh and delicious.</p>
-                <p class="testimonial-author">- Priya, Nagpur</p>
+            <div class="bg-gray-50 shadow-lg rounded-xl p-8">
+                <p class="text-lg text-gray-600 mb-4">"I recently ordered a custom cake from Sunrise Bakery for my birthday, and it was absolutely stunning! 🎂" - Rohan, Nagpur</p>
+                <div class="flex justify-start">
+                    <span class="text-yellow-400 text-2xl mr-2">⭐⭐⭐⭐⭐</span>
+                    <p class="text-gray-600">5/5 stars</p>
+                </div>
             </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">Sunrise Bakery's bread is the best I've ever had. Highly recommended!</p>
-                <p class="testimonial-author">- Karan, Nagpur</p>
+            <div class="bg-gray-50 shadow-lg rounded-xl p-8">
+                <p class="text-lg text-gray-600 mb-4">"Sunrise Bakery's pastries are the perfect way to start my day! 🥐" - Neha, Nagpur</p>
+                <div class="flex justify-start">
+                    <span class="text-yellow-400 text-2xl mr-2">⭐⭐⭐⭐⭐</span>
+                    <p class="text-gray-600">5/5 stars</p>
+                </div>
             </div>
         </div>
     </section>
-    <section class="contact" id="contact">
-        <h2 class="section-headline">Get in touch</h2>
-        <form action="#" method="POST" id="contact-form">
-            <input type="hidden" name="_subject" value="New inquiry from Sunrise Bakery">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="tel" name="phone" placeholder="Phone Number" required>
-            <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-    <section class="location" id="location">
-        <h2 class="section-headline">Find us</h2>
-        <div id="map" style="height: 300px; width: 100%"></div>
-    </section>
-    <footer>
-        <div class="footer-contact">
-            <p>Phone: 9876543210</p>
-            <p>Email: <a href="mailto:hello@sunrisebakery.in">hello@sunrisebakery.in</a></p>
-            <p>Address: MG Road, Nagpur</p>
+    <section class="py-16" id="contact">
+        <h2 class="text-3xl font-bold text-blue-600 text-center mb-8">Get in Touch</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <form action="#" method="POST" id="contact-form" class="space-y-4">
+                <input type="hidden" name="_subject" value="New inquiry from Sunrise Bakery">
+                <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+                <input type="tel" name="phone" placeholder="Phone Number" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+                <textarea name="message" placeholder="Your Message" rows="4" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"></textarea>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">Send Message</button>
+            </form>
+            <div class="bg-gray-50 shadow-lg rounded-xl p-8">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">Contact Information</h3>
+                <p class="text-lg text-gray-600 mb-4">Phone: <a href="tel:9876543210" class="text-blue-600 hover:text-blue-700 transition-colors">9876543210</a></p>
+                <p class="text-lg text-gray-600 mb-4">Email: <a href="mailto:hello@sunrisebakery.in" class="text-blue-600 hover:text-blue-700 transition-colors">hello@sunrisebakery.in</a></p>
+                <p class="text-lg text-gray-600 mb-4">Address: MG Road, Nagpur</p>
+            </div>
         </div>
-        <div class="footer-social">
-            <a href="https://wa.me/919876543210?text=Hello%2C%20I%20found%20you%20online" target="_blank" class="whatsapp-float">💬</a>
+    </section>
+    <section class="py-16" id="map">
+        <h2 class="text-3xl font-bold text-blue-600 text-center mb-8">Our Location</h2>
+        <div id="leaflet-map" style="height: 500px; width: 100%"></div>
+    </section>
+    <footer class="bg-gray-900 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-gray-50">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">Sunrise Bakery</h3>
+                <p class="text-lg text-gray-50 mb-4">Fresh baked happiness since 2010</p>
+                <p class="text-lg text-gray-50 mb-4">MG Road, Nagpur</p>
+            </div>
+            <div class="text-gray-50">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">Quick Links</h3>
+                <ul class="space-y-4">
+                    <li><a href="#services" class="text-gray-50 hover:text-blue-600 transition-colors">Services</a></li>
+                    <li><a href="#about" class="text-gray-50 hover:text-blue-600 transition-colors">About</a></li>
+                    <li><a href="#contact" class="text-gray-50 hover:text-blue-600 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div class="text-gray-50">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">Contact Us</h3>
+                <p class="text-lg text-gray-50 mb-4">Phone: <a href="tel:9876543210" class="text-gray-50 hover:text-blue-600 transition-colors">9876543210</a></p>
+                <p class="text-lg text-gray-50 mb-4">Email: <a href="mailto:hello@sunrisebakery.in" class="text-gray-50 hover:text-blue-600 transition-colors">hello@sunrisebakery.in</a></p>
+            </div>
         </div>
+        <p class="text-center text-gray-50 mt-8">&copy; 2023 Sunrise Bakery. All rights reserved.</p>
     </footer>
-    
-  <script src="script.js"></script>
+    <a href="https://wa.me/919876543210?text=Hello%2C%20I%20found%20you%20online" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg text-2xl transition-all" aria-label="Chat on WhatsApp">
+        💬
+    </a>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile nav toggle
+        document.getElementById('nav-toggle').addEventListener('click', function () {
+            document.getElementById('mobile-nav').classList.toggle('hidden');
+        });
+
+        // Sticky nav background change on scroll
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                document.querySelector('nav').classList.add('bg-gray-100');
+            } else {
+                document.querySelector('nav').classList.remove('bg-gray-100');
+            }
+        });
+
+        // Form submit via fetch()
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            fetch('#', {
+                method: 'POST',
+                body: new FormData(this)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Form submitted successfully!');
+            })
+            .catch(error => {
+                alert('Error submitting form: ' + error.message);
+            });
+        });
+
+        // Leaflet map
+        var map = L.map('leaflet-map').setView([21.1458, 79.0882], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+            subdomains: ['a', 'b', 'c']
+        }).addTo(map);
+        var marker = L.marker([21.1458, 79.0882]).addTo(map);
+    </script>
 </body>
 </html>
