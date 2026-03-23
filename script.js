@@ -1,101 +1,75 @@
-```javascript
-// Smooth scroll and animations
-document.addEventListener('DOMContentLoaded', function() {
-  const smoothScroll = () => {
-    document.querySelector('html').classList.add('smooth-scroll');
-  };
-
-  document.querySelector('nav').addEventListener('scroll', function() {
-    if (this.scrollTop > 100) {
-      this.classList.add('scrolled');
+// Sticky Nav
+window.addEventListener("scroll", function() {
+    var nav = document.getElementById("nav");
+    var scroll = window.scrollY;
+    if (scroll >= 100) {
+        nav.classList.add("sticky");
     } else {
-      this.classList.remove('scrolled');
+        nav.classList.remove("sticky");
     }
-  });
-
-  smoothScroll();
 });
 
-// Contact form validation
-const contactForm = document.getElementById('contact-form');
-const successMessage = document.getElementById('success-message');
-const errorMessage = document.getElementById('error-message');
-
-contactForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
-  const message = document.getElementById('message').value;
-
-  if (name === '' || phone === '' || message === '') {
-    errorMessage.style.display = 'block';
-    setTimeout(() => {
-      errorMessage.style.display = 'none';
-    }, 3000);
-  } else {
-    axios.post('https://formspree.io/f/your-formspree-id', {
-      name,
-      phone,
-      message,
-    })
-    .then((response) => {
-      successMessage.style.display = 'block';
-      setTimeout(() => {
-        successMessage.style.display = 'none';
-        contactForm.reset();
-      }, 3000);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  }
+// Floating WhatsApp Button
+const whatsappFab = document.querySelector(".whatsapp-fab");
+window.addEventListener("scroll", function() {
+    if (window.scrollY >= 100) {
+        whatsappFab.style.bottom = "20px";
+    } else {
+        whatsappFab.style.bottom = "40px";
+    }
 });
 
-// WhatsApp floating button
-const whatsappFab = document.getElementById('whatsapp-fab');
-const whatsappLink = whatsappFab.querySelector('a');
-
-whatsappFab.addEventListener('click', function() {
-  whatsappLink.click();
+// Form Validation
+const contactForm = document.getElementById("contact-form");
+contactForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const message = document.getElementById("message").value;
+    if (name === "" || phone === "" || message === "") {
+        alert("Please fill out all fields.");
+    } else {
+        // Send form data to server-side script
+        // Use AJAX or Fetch API to make a POST request
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("phone", phone);
+        formData.append("message", message);
+        fetch("/sendmail", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                alert("Message sent successfully!");
+                contactForm.reset();
+            } else {
+                alert("Error sending message. Please try again.");
+            }
+        })
+        .catch(error => console.error(error));
+    }
 });
 
-// UPI QR code
-const upiQr = document.getElementById('upi-qr');
-const upiId = 'Not available';
-
-if (upiId !== 'Not available') {
-  const qrcode = new QRCode(upiQr, {
-    text: `upi://pay?pa=${upiId}&pn=Sunrise%20Bakery&cu=INR`,
-    width: 100,
-    height: 100,
-  });
-}
-
-// Google Maps initialization
-function initMap() {
-  const map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: 21.1454, lng: 79.0842 },
-    zoom: 15,
-  });
-
-  const marker = new google.maps.Marker({
-    position: { lat: 21.1454, lng: 79.0842 },
-    map: map,
-  });
-}
-
-// Local Business Schema
-const schema = `
-  {
-    "@context": "https://schema.org",
-    "@type": "Bakery",
-    "name": "Sunrise Bakery",
-    "address": {"@type": "PostalAddress", "addressLocality": "Nagpur", "addressCountry": "IN"},
-    "telephone": "9876543210",
-    "email": "hello@sunrisebakery.in",
-    "url": "https://sunrisebakery.in"
-  }
-`;
-
-document.head.insertAdjacentHTML('beforeend', schema);
-```
+// Success/Error Messages
+const successMessage = document.createElement("p");
+successMessage.style.color = "#25D366";
+successMessage.style.fontSize = "18px";
+const errorMessage = document.createElement("p");
+errorMessage.style.color = "#ff0000";
+errorMessage.style.fontSize = "18px";
+contactForm.parentNode.appendChild(successMessage);
+contactForm.parentNode.appendChild(errorMessage);
+contactForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const message = document.getElementById("message").value;
+    if (name === "" || phone === "" || message === "") {
+        errorMessage.textContent = "Please fill out all fields.";
+    } else {
+        successMessage.textContent = "Message sent successfully!";
+        errorMessage.textContent = "";
+    }
+});
