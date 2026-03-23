@@ -1,26 +1,51 @@
 document.addEventListener("DOMContentLoaded", function() {
-const whatsappButton = document.createElement('button');
-whatsappButton.textContent = '📱';
-whatsappButton.classList.add('whatapp-button');
-document.body.appendChild(whatsappButton);
+// script.js
 
-whatsappButton.addEventListener('click', () => {
-  const whatsappUrl = 'https://wa.me/919876543210?text=Hello%2C%20I%20found%20you%20online';
-  window.open(whatsappUrl, '_blank');
+// Sticky navigation
+const nav = document.querySelector('header');
+const hero = document.querySelector('#hero');
+
+const sticky = () => {
+  if (window.scrollY > hero.offsetHeight) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+}
+
+sticky();
+
+window.addEventListener('scroll', sticky);
+
+// WhatsApp floating button
+const whatsappBtn = document.querySelector('.whatsapp-btn');
+const whatsappLink = 'https://wa.me/919876543210?text=Hello%2C%20I%20found%20you%20online';
+
+whatsappBtn.addEventListener('click', () => {
+  window.location.href = whatsappLink;
 });
 
-document.getElementById('contact-form').addEventListener('submit', (e) => {
+// WhatsApp floating button fade-in animation
+const whatsappFadeIn = () => {
+  whatsappBtn.classList.add('fade-in');
+}
+
+const fadeInTimeout = setTimeout(whatsappFadeIn, 1000);
+
+// Contact form submit handler
+const contactForm = document.querySelector('#contact-form');
+
+contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const formData = new FormData(e.target);
-  fetch('#', {
+
+  const formData = new FormData(contactForm);
+  const response = fetch('#', {
     method: 'POST',
     body: formData,
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      alert('Message sent successfully!');
-    })
-    .catch((err) => console.error(err));
+  });
+
+  response.then(() => {
+    alert('Message sent successfully!');
+  });
 });
 });
